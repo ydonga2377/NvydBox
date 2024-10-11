@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Header from './components/Common/header';
+import HomePage from './components/Home';
+import GamesPage from './components/Game';
+import MarketplacePage from './components/Marketplace';
+import CommunityPage from './components/Community';
+import LibraryPage from './components/Library';
+import SignInPage from './components/Singin';
+import SingleGame from './components/SingleGame';
+import UserProfilePage from './components/User-profile';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/games" element={<GamesPage />} />
+        <Route path="/marketplace" element={<MarketplacePage />} />
+        <Route path="/community" element={<CommunityPage />} />
+        <Route path="/library" element={<LibraryPage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/singlegame" element={<SingleGame />} />
+        <Route path="/userprofile" element={<UserProfilePage />} />
+      </Routes>
+    </Router>
   );
 }
 
