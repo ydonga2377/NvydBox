@@ -9,6 +9,8 @@ import LibraryPage from './components/Library';
 import SignInPage from './components/Singin';
 import SingleGame from './components/SingleGame';
 import UserProfilePage from './components/User-profile';
+import "../public/css/bootstrap.min.css"
+import "../public/css/style.css"
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/singlegame" element={<SingleGame />} />
         <Route path="/userprofile" element={<UserProfilePage />} />
+
       </Routes>
     </Router>
   );
