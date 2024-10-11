@@ -3,9 +3,7 @@ import React from 'react'
 const index = () => {
   return (
     <div>
-      <div id="preloder">
-          <div class="loader"></div>
-      </div>
+     
       
     <section class="hero">
         <div class="container">
