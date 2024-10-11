@@ -9,8 +9,8 @@ import LibraryPage from './components/Library';
 import SignInPage from './components/Singin';
 import SingleGame from './components/SingleGame';
 import UserProfilePage from './components/User-profile';
-import "../public/css/bootstrap.min.css"
-import "../public/css/style.css"
+import "./assets/css/bootstrap.min.css"
+import "./assets/css/style.css"
 
 function App() {
   return (
