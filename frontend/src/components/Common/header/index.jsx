@@ -9,7 +9,8 @@ const Header = () => {
           <div className="col-lg-2">
             <div className="header__logo">
               <Link to="/">
-                <img src="img/logo.png" alt="Logo" />
+              <div className="section-title"><h4>NyvdBox</h4></div>
+                
               </Link>
             </div>
           </div>
@@ -17,14 +18,15 @@ const Header = () => {
             <div className="header__nav">
               <nav className="header__menu mobile-menu">
                 <ul>
-                  <li><Link to="/">Homepage</Link></li>
+                  <li><Link to="/">Home</Link></li>
+                  <li><Link to="/aboutus">About Us</Link></li>
                   <li><Link to="/games">Game</Link></li>
                   <li><Link to="/community">Community</Link></li>
                   <li><Link to="/library">Library</Link></li>
                   <li><Link to="/marketplace">Marketplace</Link></li>
-                  <li><Link to="/signin">Singin</Link></li>
-                  <li><Link to="/userprofile">UserProfile</Link></li>
-                  <li><Link to="/singlegame">SingleGame</Link></li>
+                  <li><Link to="/signin">Sing in</Link></li>
+                  <li><Link to="/userprofile">User Profile</Link></li>
+                  <li><Link to="/singlegame">Single Game</Link></li>
                 </ul>
               </nav>
             </div>

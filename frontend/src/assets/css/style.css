@@ -2340,3 +2340,123 @@ ol {
 		padding: 18px 20px 20px;
 	}
 }
+
+.library {
+	padding: 20px;
+  }
+  
+  .search-bar {
+	margin-bottom: 20px;
+  }
+  
+  .search-bar input {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+  }
+  
+  .game-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+  }
+  
+  .game-item {
+	
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	overflow: hidden;
+	text-align: center;
+  }
+  
+  .game-item img {
+	width: 100%;
+	height: auto;
+  }
+  
+  .game-item h5 {
+	margin: 10px 0;
+  }
+  
+  .game-item p {
+	margin: 5px 0;
+  }
+  
+  .game-item button {
+	padding: 10px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+  }
+  
+  .game-item button:hover {
+	background-color: #0056b3;
+  }
+  .library-container {
+	padding: 20px;
+  }
+  
+  .game-item img {
+	height: auto; /* Maintain aspect ratio */
+	max-height: 350px; /* Set a max height */
+  }
+  
+  .game-actions {
+	margin-top: 10px; /* Space between status and button */
+  }
+	
+  .about-us {
+	
+	color: white; /* Set text color to white */
+	padding: 20px; /* Add some padding for better spacing */
+  }
+  
+  .about-us h2,
+  .about-us h4 {
+	color: #f0f0f0; /* Lighten headers slightly if desired */
+  }
+  
+  .about-us p {
+	color: #d3d3d3; /* Use a lighter shade for paragraphs */
+  }
+
+  .company-overview, .team-members, .company-culture, .contact-information {
+	margin-bottom: 40px;
+  }
+  
+  .intro, .history {
+	margin-bottom: 20px;
+  }
+  
+  .team-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+  }
+  
+  .team-member {
+	background-color: rgba(255, 255, 255, 0.1); /* Light background for team members */
+	border-radius: 10px;
+	padding: 15px;
+	margin: 10px;
+	flex: 1 1 calc(30% - 20px); /* Responsive layout */
+	transition: transform 0.2s;
+  }
+  
+  .team-member:hover {
+	transform: scale(1.05); /* Slight zoom on hover */
+  }
+  
+  .employee-testimonials {
+	border-left: 3px solid #fff;
+	padding-left: 10px;
+	margin-top: 20px;
+  }
+  .company-overview h1{
+	color:red;
+  }
+  .team-member h3{
+	color: red;
+  }
