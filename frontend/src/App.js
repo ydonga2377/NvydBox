@@ -10,6 +10,7 @@ import SignInPage from './components/Singin';
 import SingleGame from './components/SingleGame';
 import UserProfilePage from './components/User-profile';
 import "./assets/css/bootstrap.min.css"
+import "./App.css"
 import "./assets/css/style.css"
 
 function App() {
