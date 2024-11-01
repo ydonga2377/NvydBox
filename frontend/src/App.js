@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Common/header';
@@ -20,7 +21,6 @@ import "./App.css"
 import "./assets/css/style.css"
 
 
-
 function App() {
   return (
     <Router>
@@ -38,10 +38,13 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/userprofile" element={<UserProfilePage />} />
         <Route path="/AboutUs" element={<AboutUsPage />} />
+
         <Route path="/transactions" element={<TransactionPage />} />
 
+        <Route path="/cart" element={<CartPage />} />
+
       </Routes>
-      <Footer/>
+      <Footer />
     </Router>
   );
 }
