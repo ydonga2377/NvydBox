@@ -33,6 +33,7 @@ const Header = () => {
                   <li><Link to="/marketplace">Marketplace</Link></li>
                   <li><Link to="/userprofile">User Profile</Link></li>
                   <li><Link to="/singlegame">Single Game</Link></li>
+                  <li><Link to="/transactions">View Transaction History</Link></li>
                   {isLoggedIn ? (
                     <li><button onClick={handleLogout} className="logout-button site-btn p-2">Logout</button></li>
                   ) : (
