@@ -8,13 +8,13 @@ const CartPage = () => {
   const [cartItems, setCartItems] = useState([
     {
       id: 1,
-      name: "Hero Image",
+      name: "Game 1",
       price: 29.99,
       image: heroImage1,
     },
     {
       id: 2,
-      name: "Trending Image",
+      name: "Game 2",
       price: 19.99,
       image: trendingImage1,
     },

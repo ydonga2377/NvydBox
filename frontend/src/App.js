@@ -12,6 +12,8 @@ import SingleGame from "./components/SingleGame";
 import UserProfilePage from "./components/User-profile";
 import AboutUsPage from "./components/AboutUs";
 import Register from "./components/Register/index";
+import Wishlist from "./components/Wishlist/index"
+import Checkout from "./components/Checkout/index"
 import ForgotPassword from "./components/Forgot-password";
 import ResetPassword from "./components/Reset-password";
 import CartPage from "./components/Cart";
@@ -37,6 +39,8 @@ function App() {
         <Route path="/userprofile" element={<UserProfilePage />} />
         <Route path="/AboutUs" element={<AboutUsPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/Checkout" element={<Checkout />} />
       </Routes>
       <Footer />
     </Router>
