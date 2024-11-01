@@ -34,6 +34,8 @@ const Header = () => {
             <div className="col-lg-8 d-none d-lg-block">
               <nav className="header__menu">
                 <ul>
+
+                 
                   <li>
                     <Link to="/">Home</Link>
                   </li>
@@ -61,6 +63,7 @@ const Header = () => {
                   <li>
                     <Link to="/cart">Cart</Link>
                   </li>
+                  <li><Link to="/transactions">View Transaction History</Link></li>
                   {isLoggedIn ? (
                     <li>
                       <button

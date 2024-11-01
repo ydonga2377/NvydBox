@@ -1,0 +1,23 @@
+/* src/pages/TransactionPage.css */
+
+.transaction-page {
+    padding: 20px;
+  }
+  
+  .transaction-table {
+    color: #fff;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .transaction-table th,
+  .transaction-table td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .transaction-table th {
+    background-color: #292828;
+  }
+  
