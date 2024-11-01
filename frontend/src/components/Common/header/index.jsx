@@ -1,7 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem('token');
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/signin');
+  };
+
   return (
     <header className="header">
       <div className="container">
@@ -9,12 +17,11 @@ const Header = () => {
           <div className="col-lg-2">
             <div className="header__logo">
               <Link to="/">
-              <div className="section-title"><h4>NyvdBox</h4></div>
-                
+                <div className="section-title"><h4>NyvdBox</h4></div>
               </Link>
             </div>
           </div>
-          <div className="col-lg-8">
+          <div className="col-lg-10">
             <div className="header__nav">
               <nav className="header__menu mobile-menu">
                 <ul>
@@ -24,9 +31,13 @@ const Header = () => {
                   <li><Link to="/community">Community</Link></li>
                   <li><Link to="/library">Library</Link></li>
                   <li><Link to="/marketplace">Marketplace</Link></li>
-                  <li><Link to="/signin">Sing in</Link></li>
                   <li><Link to="/userprofile">User Profile</Link></li>
                   <li><Link to="/singlegame">Single Game</Link></li>
+                  {isLoggedIn ? (
+                    <li><button onClick={handleLogout} className="logout-button site-btn p-2">Logout</button></li>
+                  ) : (
+                    <li><Link to="/signin"className='site-btn p-2'>Sign in</Link></li>
+                  )}
                 </ul>
               </nav>
             </div>
@@ -34,7 +45,7 @@ const Header = () => {
           <div className="col-lg-2">
             <div className="header__right">
               <Link to="#" className="search-switch"><span className="icon_search"></span></Link>
-              <Link to="/login"><span className="icon_profile"></span></Link>
+              <Link to="/signin"><span className="icon_profile"></span></Link>
             </div>
           </div>
         </div>
@@ -42,6 +53,6 @@ const Header = () => {
       </div>
     </header>
   );
-}
+};
 
 export default Header;

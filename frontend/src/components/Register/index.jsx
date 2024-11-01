@@ -2,21 +2,19 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
-      setMessage(response.data.message);
-      localStorage.setItem('token', response.data.token);
-      navigate('/');
+      const response = await axios.post('http://localhost:5000/api/auth/register', { email, password });
+      alert(response.data.message);
+      navigate('/signin');
     } catch (error) {
-      setMessage(error.response.data.message || 'Error logging in');
+      alert(error.response?.data.message || "Error registering");
     }
   };
 
@@ -25,10 +23,10 @@ const Login = () => {
       <section className="login spad">
         <div className="container">
           <div className="row">
-            <div className="col-lg-6">
+            <div className="col-lg-12">
               <div className="login__form">
-                <h3>Login</h3>
-                <form onSubmit={handleLogin}>
+                <h3>Register</h3>
+                <form onSubmit={handleRegister}>
                   <div className="input__item">
                     <input
                       type="text"
@@ -45,17 +43,9 @@ const Login = () => {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  <button type="submit" className="site-btn">Login Now</button>
-                  <a href="/forgot-password" className="primary-btn ml-2">Forgot Password?</a>
+                  <button type="submit" className="site-btn">Register Now</button>
+                  <a className="ml-2 site-btn text-white" href="/signin" type="submit">Already user ? LogIn</a>
                 </form>
-                <p>{message}</p>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="login__register">
-                <h3>Don’t Have An Account?</h3>
-                <a href="/register" className="primary-btn">Register Now</a>
-                
               </div>
             </div>
           </div>
@@ -65,4 +55,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
