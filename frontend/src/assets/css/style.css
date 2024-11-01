@@ -346,7 +346,7 @@ ol {
 	list-style: none;
 	display: inline-block;
 	position: relative;
-	margin-right: 16px;
+	margin-right: 10px;
 }
 
 .header__menu ul li.active a {
@@ -401,14 +401,14 @@ ol {
 }
 
 .header__menu ul li a {
-	font-size: 15px;
-	color: #b7b7b7;
+	font-size: 14px;
+	color: #fff;
 	display: block;
 	font-weight: 700;
 	-webkit-transition: all, 0.5s;
 	-o-transition: all, 0.5s;
 	transition: all, 0.5s;
-	padding: 20px;
+	padding: 20px 5px;
 }
 
 .header__menu ul li a span {
