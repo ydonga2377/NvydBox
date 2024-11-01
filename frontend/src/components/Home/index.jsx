@@ -1,4 +1,146 @@
-import React from 'react';
+// import React, { useState } from 'react';
+// import reviewImage from '../../assets/img/anime/review-1.jpg';
+// import heroImage1 from '../../assets/img/hero/hero-1.jpg';
+// import trendingImage1 from '../../assets/img/trending/trend-1.jpg';
+// import trendingImage2 from '../../assets/img/trending/trend-2.jpg';
+// import trendingImage3 from '../../assets/img/trending/trend-3.jpg';
+// import trendingImage4 from '../../assets/img/trending/trend-4.jpg';
+// import trendingImage5 from '../../assets/img/trending/trend-5.jpg';
+// import trendingImage6 from '../../assets/img/trending/trend-6.jpg';
+
+// const Index = () => {
+//   const [searchQuery, setSearchQuery] = useState('');
+
+//   const trendingData = [
+//     { id: 1, title: 'The Seven Deadly Sins: Wrath of the Gods', image: trendingImage1 },
+//     { id: 2, title: 'Gintama Movie 2: Kanketsu-hen - Yorozuya yo Eien', image: trendingImage2 },
+//     { id: 3, title: 'Shingeki no Kyojin Season 3 Part 2', image: trendingImage3 },
+//     { id: 4, title: 'Fullmetal Alchemist: Brotherhood', image: trendingImage4 },
+//     { id: 5, title: 'Shiratorizawa Gakuen Koukou', image: trendingImage5 },
+//     { id: 6, title: 'Code Geass: Hangyaku no Lelouch R2', image: trendingImage6 }
+//   ];
+
+//   const handleSearchChange = (event) => {
+//     setSearchQuery(event.target.value.toLowerCase());
+//   };
+
+//   const filteredTrendingData = trendingData.filter((item) =>
+//     item.title.toLowerCase().includes(searchQuery)
+//   );
+
+//   return (
+//     <div style={{ backgroundColor: '#000', color: '#fff' }}>
+//       {/* Hero Section */}
+//       <section className="hero">
+//         <div className="container">
+//           <div className="hero__slider owl-carousel">
+//             <div
+//               className="hero__items set-bg"
+//               style={{
+//                 backgroundImage: `url(${heroImage1})`,
+//                 backgroundSize: 'cover',
+//                 backgroundPosition: 'center',
+//                 minHeight: '50vh',
+//                 color: '#fff'
+//               }}
+//             >
+//               <div className="row">
+//                 <div className="col-lg-6">
+//                   <div className="hero__text">
+//                     <div className="label bg-danger text-light p-1 rounded">Adventure</div>
+//                     <h2>Fate / Stay Night: Unlimited Blade Works</h2>
+//                     <p>After 30 days of travel across the world...</p>
+//                     <a href="#" className="btn btn-light mt-3">
+//                       Watch Now <i className="fa fa-angle-right"></i>
+//                     </a>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Search Bar */}
+//       <section className="search-bar py-4" style={{ backgroundColor: '#222' }}>
+//         <div className="container">
+//           <div className="row justify-content-center">
+//             <div className="col-md-8 col-lg-6">
+//               <input
+//                 type="text"
+//                 placeholder="Search trending..."
+//                 value={searchQuery}
+//                 onChange={handleSearchChange}
+//                 className="form-control form-control-lg rounded shadow-sm text-light"
+//                 style={{ backgroundColor: '#333', border: '1px solid #555' }}
+//               />
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Trending Products */}
+//       <section className="product spad">
+//         <div className="container">
+//           <div className="row">
+//             <div className="col-lg-8">
+//               <div className="trending__product">
+//                 <div className="row mb-3">
+//                   <div className="col-lg-8 col-md-8 col-sm-8">
+//                     <h4 className="section-title text-light">Trending Now</h4>
+//                   </div>
+//                 </div>
+//                 <div className="row">
+//                   {filteredTrendingData.map((item) => (
+//                     <div className="col-lg-4 col-md-6 col-sm-6 mb-4" key={item.id}>
+//                       <div className="product__item card shadow-sm border-0 bg-dark text-light">
+//                         <div
+//                           className="product__item__pic card-img-top"
+//                           style={{
+//                             backgroundImage: `url(${item.image})`,
+//                             backgroundSize: 'cover',
+//                             backgroundPosition: 'center',
+//                             height: '200px'
+//                           }}
+//                         >
+//                           <div className="ep badge bg-warning text-dark position-absolute top-0 start-0 m-2">
+//                             18 / 18
+//                           </div>
+//                           <div className="comment badge bg-light text-dark position-absolute bottom-0 start-0 m-2">
+//                             <i className="fa fa-comments"></i> 11
+//                           </div>
+//                           <div className="view badge bg-light text-dark position-absolute bottom-0 end-0 m-2">
+//                             <i className="fa fa-eye"></i> 9141
+//                           </div>
+//                         </div>
+//                         <div className="product__item__text p-3">
+//                           <ul className="list-inline mb-1">
+//                             <li className="list-inline-item badge bg-primary text-light">Active</li>
+//                             <li className="list-inline-item badge bg-success text-light">Movie</li>
+//                           </ul>
+//                           <h5 className="card-title mt-2">
+//                             <a href="#" className="text-light text-decoration-none">
+//                               {item.title}
+//                             </a>
+//                           </h5>
+//                         </div>
+//                       </div>
+//                     </div>
+//                   ))}
+//                 </div>
+//               </div>
+//             </div>
+//             {/* Sidebar content can go here */}
+//           </div>
+//         </div>
+//       </section>
+//     </div>
+//   );
+// };
+
+
+
+import React, { useState } from 'react';
 import reviewImage from '../../assets/img/anime/review-1.jpg';
 import heroImage1 from '../../assets/img/hero/hero-1.jpg';
 import trendingImage1 from '../../assets/img/trending/trend-1.jpg';
@@ -7,19 +149,50 @@ import trendingImage3 from '../../assets/img/trending/trend-3.jpg';
 import trendingImage4 from '../../assets/img/trending/trend-4.jpg';
 import trendingImage5 from '../../assets/img/trending/trend-5.jpg';
 import trendingImage6 from '../../assets/img/trending/trend-6.jpg';
-import sidebarImage1 from '../../assets/img/sidebar/tv-1.jpg';
-import sidebarImage2 from '../../assets/img/sidebar/tv-2.jpg';
-import sidebarImage3 from '../../assets/img/sidebar/tv-3.jpg';
-import sidebarImage4 from '../../assets/img/sidebar/tv-4.jpg';
-import sidebarImage5 from '../../assets/img/sidebar/tv-5.jpg';
-import commentImage1 from '../../assets/img/sidebar/comment-1.jpg';
-import commentImage2 from '../../assets/img/sidebar/comment-2.jpg';
-import commentImage3 from '../../assets/img/sidebar/comment-3.jpg';
-import commentImage4 from '../../assets/img/sidebar/comment-4.jpg';
 
 const Index = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortOption, setSortOption] = useState('');
+
+  const trendingData = [
+    { id: 1, title: 'The Seven Deadly Sins: Wrath of the Gods', image: trendingImage1, price: 59.99, genre: 'Adventure', releaseDate: '2022-11-15', rating: 4.5 },
+    { id: 2, title: 'Gintama Movie 2: Kanketsu-hen - Yorozuya yo Eien', image: trendingImage2, price: 39.99, genre: 'Action', releaseDate: '2023-01-20', rating: 4.2 },
+    { id: 3, title: 'Shingeki no Kyojin Season 3 Part 2', image: trendingImage3, price: 49.99, genre: 'RPG', releaseDate: '2021-07-11', rating: 4.8 },
+    { id: 4, title: 'Fullmetal Alchemist: Brotherhood', image: trendingImage4, price: 44.99, genre: 'Fantasy', releaseDate: '2019-05-01', rating: 4.7 },
+    { id: 5, title: 'Shiratorizawa Gakuen Koukou', image: trendingImage5, price: 34.99, genre: 'Sports', releaseDate: '2020-09-23', rating: 4.4 },
+    { id: 6, title: 'Code Geass: Hangyaku no Lelouch R2', image: trendingImage6, price: 54.99, genre: 'Sci-Fi', releaseDate: '2018-12-07', rating: 4.9 }
+  ];
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value.toLowerCase());
+  };
+
+  const handleSortChange = (event) => {
+    setSortOption(event.target.value);
+  };
+
+  // Filter and sort trending data based on search and sort options
+  const filteredTrendingData = [...trendingData]
+    .filter((item) => item.title.toLowerCase().includes(searchQuery))
+    .sort((a, b) => {
+      switch (sortOption) {
+        case 'priceLowToHigh':
+          return a.price - b.price;
+        case 'priceHighToLow':
+          return b.price - a.price;
+        case 'releaseDate':
+          return new Date(b.releaseDate) - new Date(a.releaseDate);
+        case 'rating':
+          return b.rating - a.rating;
+        case 'genre':
+          return a.genre.localeCompare(b.genre);
+        default:
+          return 0;
+      }
+    });
+
   return (
-    <div>
+    <div style={{ color: '#fff' }}>
       <section className="hero">
         <div className="container">
           <div className="hero__slider owl-carousel">
@@ -35,12 +208,35 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            {/* Repeat for other hero items, if necessary */}
           </div>
         </div>
       </section>
 
-     
+      {/* Search and Sort Options */}
+    {/* Search and Sort Options */}
+<section className="search-bar">
+  <div className="container d-flex justify-content-between">
+    <input
+      type="text"
+      placeholder="Search trending..."
+      value={searchQuery}
+      onChange={handleSearchChange}
+      className="form-control w-50 transparent-input"
+    />
+    <select
+      value={sortOption}
+      onChange={handleSortChange}
+      className="form-select w-25 ms-3 transparent-select"
+    >
+      <option value="">Sort by</option>
+      <option value="priceLowToHigh">Price: Low to High</option>
+      <option value="priceHighToLow">Price: High to Low</option>
+      <option value="genre">Genre</option>
+      <option value="releaseDate">Release Date</option>
+      <option value="rating">Rating</option>
+    </select>
+  </div>
+</section>
 
       <section className="product spad">
         <div className="container">
@@ -53,179 +249,36 @@ const Index = () => {
                       <h4>Trending Now</h4>
                     </div>
                   </div>
-                  <div className="col-lg-4 col-md-4 col-sm-4">
-                    <div className="btn__all">
-                      <a href="#" className="primary-btn">View All <span className="arrow_right"></span></a>
-                    </div>
-                  </div>
                 </div>
                 <div className="row">
-                  <div className="col-lg-4 col-md-6 col-sm-6">
-                    <div className="product__item">
-                      <div className="product__item__pic set-bg" style={{ backgroundImage: `url(${trendingImage1})` }}>
-                        <div className="ep">18 / 18</div>
-                        <div className="comment"><i className="fa fa-comments"></i> 11</div>
-                        <div className="view"><i className="fa fa-eye"></i> 9141</div>
-                      </div>
-                      <div className="product__item__text">
-                        <ul>
-                          <li>Active</li>
-                          <li>Movie</li>
-                        </ul>
-                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-md-6 col-sm-6">
-                    <div className="product__item">
-                      <div className="product__item__pic set-bg" style={{ backgroundImage: `url(${trendingImage2})` }}>
-                        <div className="ep">18 / 18</div>
-                        <div className="comment"><i className="fa fa-comments"></i> 11</div>
-                        <div className="view"><i className="fa fa-eye"></i> 9141</div>
-                      </div>
-                      <div className="product__item__text">
-                        <ul>
-                          <li>Active</li>
-                          <li>Movie</li>
-                        </ul>
-                        <h5><a href="#">Gintama Movie 2: Kanketsu-hen - Yorozuya yo Eien</a></h5>
+                  {filteredTrendingData.map((item) => (
+                    <div className="col-lg-4 col-md-6 col-sm-6" key={item.id}>
+                      <div className="product__item">
+                        <div className="product__item__pic set-bg" style={{ backgroundImage: `url(${item.image})` }}>
+                          <div className="ep">18 / 18</div>
+                          <div className="comment"><i className="fa fa-comments"></i> 11</div>
+                          <div className="view"><i className="fa fa-eye"></i> 9141</div>
+                        </div>
+                        <div className="product__item__text">
+                          <ul className="list-inline mb-1">
+                            <li className="list-inline-item badge bg-primary text-light">Active</li>
+                            <li className="list-inline-item badge bg-success text-light">{item.genre}</li>
+                          </ul>
+                          <h5 className="card-title mt-2">
+                            <a href="#" className="text-light text-decoration-none">
+                              {item.title}
+                            </a>
+                          </h5>
+                          <p>Price: ${item.price.toFixed(2)}</p>
+                          <p>Rating: {item.rating} / 5</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-lg-4 col-md-6 col-sm-6">
-                    <div className="product__item">
-                      <div className="product__item__pic set-bg" style={{ backgroundImage: `url(${trendingImage3})` }}>
-                        <div className="ep">18 / 18</div>
-                        <div className="comment"><i className="fa fa-comments"></i> 11</div>
-                        <div className="view"><i className="fa fa-eye"></i> 9141</div>
-                      </div>
-                      <div className="product__item__text">
-                        <ul>
-                          <li>Active</li>
-                          <li>Movie</li>
-                        </ul>
-                        <h5><a href="#">Shingeki no Kyojin Season 3 Part 2</a></h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-md-6 col-sm-6">
-                    <div className="product__item">
-                      <div className="product__item__pic set-bg" style={{ backgroundImage: `url(${trendingImage4})` }}>
-                        <div className="ep">18 / 18</div>
-                        <div className="comment"><i className="fa fa-comments"></i> 11</div>
-                        <div className="view"><i className="fa fa-eye"></i> 9141</div>
-                      </div>
-                      <div className="product__item__text">
-                        <ul>
-                          <li>Active</li>
-                          <li>Movie</li>
-                        </ul>
-                        <h5><a href="#">Fullmetal Alchemist: Brotherhood</a></h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-md-6 col-sm-6">
-                    <div className="product__item">
-                      <div className="product__item__pic set-bg" style={{ backgroundImage: `url(${trendingImage5})` }}>
-                        <div className="ep">18 / 18</div>
-                        <div className="comment"><i className="fa fa-comments"></i> 11</div>
-                        <div className="view"><i className="fa fa-eye"></i> 9141</div>
-                      </div>
-                      <div className="product__item__text">
-                        <ul>
-                          <li>Active</li>
-                          <li>Movie</li>
-                        </ul>
-                        <h5><a href="#">Shiratorizawa Gakuen Koukou</a></h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-md-6 col-sm-6">
-                    <div className="product__item">
-                      <div className="product__item__pic set-bg" style={{ backgroundImage: `url(${trendingImage6})` }}>
-                        <div className="ep">18 / 18</div>
-                        <div className="comment"><i className="fa fa-comments"></i> 11</div>
-                        <div className="view"><i className="fa fa-eye"></i> 9141</div>
-                      </div>
-                      <div className="product__item__text">
-                        <ul>
-                          <li>Active</li>
-                          <li>Movie</li>
-                        </ul>
-                        <h5><a href="#">Code Geass: Hangyaku no Lelouch R2</a></h5>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-sm-8">
-              <div className="product__sidebar">
-                <div className="product__sidebar__view">
-                  <div className="section-title">
-                    <h5>Top Views</h5>
-                  </div>
-                  <ul className="filter__controls">
-                    <li className="active" data-filter="*">Day</li>
-                    <li data-filter=".week">Week</li>
-                    <li data-filter=".month">Month</li>
-                  </ul>
-                  <div className="product__sidebar__view__item set-bg" style={{ backgroundImage: `url(${sidebarImage1})` }}>
-                    <div className="ep">18 / 18</div>
-                    <h5><a href="#">My Hero Academia: Heroes Rising</a></h5>
-                  </div>
-                  <div className="product__sidebar__view__item set-bg" style={{ backgroundImage: `url(${sidebarImage2})` }}>
-                    <div className="ep">18 / 18</div>
-                    <h5><a href="#">One Punch Man</a></h5>
-                  </div>
-                  <div className="product__sidebar__view__item set-bg" style={{ backgroundImage: `url(${sidebarImage3})` }}>
-                    <div className="ep">18 / 18</div>
-                    <h5><a href="#">Attack on Titan</a></h5>
-                  </div>
-                  <div className="product__sidebar__view__item set-bg" style={{ backgroundImage: `url(${sidebarImage4})` }}>
-                    <div className="ep">18 / 18</div>
-                    <h5><a href="#">Death Note</a></h5>
-                  </div>
-                  <div className="product__sidebar__view__item set-bg" style={{ backgroundImage: `url(${sidebarImage5})` }}>
-                    <div className="ep">18 / 18</div>
-                    <h5><a href="#">Sword Art Online</a></h5>
-                  </div>
-                </div>
-                <div className="product__sidebar__comment">
-                  <div className="section-title">
-                    <h5>Comments</h5>
-                  </div>
-                  <div className="product__sidebar__comment__item">
-                    <div className="product__sidebar__comment__item__pic set-bg" style={{ backgroundImage: `url(${commentImage1})` }}></div>
-                    <div className="product__sidebar__comment__item__text">
-                      <h6><a href="#">Zac Taylor</a></h6>
-                      <span>Just finished watching this!</span>
-                    </div>
-                  </div>
-                  <div className="product__sidebar__comment__item">
-                    <div className="product__sidebar__comment__item__pic set-bg" style={{ backgroundImage: `url(${commentImage2})` }}></div>
-                    <div className="product__sidebar__comment__item__text">
-                      <h6><a href="#">Lily Collins</a></h6>
-                      <span>Great story!</span>
-                    </div>
-                  </div>
-                  <div className="product__sidebar__comment__item">
-                    <div className="product__sidebar__comment__item__pic set-bg" style={{ backgroundImage: `url(${commentImage3})` }}></div>
-                    <div className="product__sidebar__comment__item__text">
-                      <h6><a href="#">Tom Hardy</a></h6>
-                      <span>Can’t wait for the next episode!</span>
-                    </div>
-                  </div>
-                  <div className="product__sidebar__comment__item">
-                    <div className="product__sidebar__comment__item__pic set-bg" style={{ backgroundImage: `url(${commentImage4})` }}></div>
-                    <div className="product__sidebar__comment__item__text">
-                      <h6><a href="#">Emma Watson</a></h6>
-                      <span>A must-watch!</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Sidebar content can go here */}
           </div>
         </div>
       </section>
