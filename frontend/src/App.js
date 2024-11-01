@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Common/header';
-import Footer from './components/Common/footer';
+import Footer from './components/Common/Footer';
 import HomePage from './components/Home';
 import GamesPage from './components/Game';
 import MarketplacePage from './components/Marketplace';
