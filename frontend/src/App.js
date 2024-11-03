@@ -19,7 +19,7 @@ import TransactionPage from "./components/Transactions/TransactionPage";
 import "./assets/css/bootstrap.min.css"
 import "./App.css"
 import "./assets/css/style.css"
-
+import CartPage from './components/Cart';
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/singlegame" element={<SingleGame />} />
+        <Route path="/games/:title" element={<SingleGame />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/userprofile" element={<UserProfilePage />} />
         <Route path="/AboutUs" element={<AboutUsPage />} />

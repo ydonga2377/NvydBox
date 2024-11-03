@@ -12,8 +12,10 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const { userId, token } = response.data;
+      localStorage.setItem('userId', userId);
+      localStorage.setItem('token', token);
       setMessage(response.data.message);
-      localStorage.setItem('token', response.data.token);
       navigate('/');
     } catch (error) {
       setMessage(error.response.data.message || 'Error logging in');
