@@ -5,7 +5,6 @@ const nodemailer = require('nodemailer');
 const User = require('../models/User');
 const router = express.Router();
 
-// Email Transporter Setup
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -14,7 +13,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// User Registration Route
 router.post('/register', async (req, res) => {
     const { email, password } = req.body;
 
@@ -35,7 +33,6 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// User Login Route
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -43,14 +40,14 @@ router.post('/login', async (req, res) => {
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).send({ message: 'Invalid credentials' });
     }
-    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.status(200).send({ message: 'Logged in!', token });
+
+    const token = jwt.sign({ email: user.email, userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.status(200).send({ message: 'Logged in!', userId: user._id, token });
   } catch (error) {
     res.status(500).send({ message: 'Error logging in' });
   }
 });
 
-// Forgot Password Route
 router.post('/forgot-password', async (req, res) => {
   const { email } = req.body;
 
@@ -62,7 +59,7 @@ router.post('/forgot-password', async (req, res) => {
 
     const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
     user.resetToken = token;
-    user.resetTokenExpiration = Date.now() + 3600000; // 1 hour
+    user.resetTokenExpiration = Date.now() + 3600000;
     await user.save();
 
     const mailOptions = {
@@ -79,7 +76,6 @@ router.post('/forgot-password', async (req, res) => {
   }
 });
 
-// Reset Password Route
 router.post('/reset-password', async (req, res) => {
   const { token, newPassword } = req.body;
 

@@ -4,6 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 const authRoutes = require('./routes/auth');
 const gameRoutes = require('./routes/games');
+const reviewRoutes = require('./routes/review');
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/games', gameRoutes);
+app.use('/api/reviews', reviewRoutes);
 
 const PORT = process.env.PORT || 5000;
 
