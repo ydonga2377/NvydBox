@@ -1,17 +1,38 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [message, setMessage] = useState("");
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   const handleForgotPassword = async (e) => {
     e.preventDefault();
+    setEmailError("");
+    setMessage("");
+
+    // Email validation
+    if (!email) {
+      setEmailError("Email is required.");
+      return;
+    } else if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    }
+
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/forgot-password",
+        { email }
+      );
       setMessage(response.data.message);
     } catch (error) {
-      setMessage(error.response.data.message || 'Error sending email');
+      setMessage(error.response?.data?.message || "Error sending email");
     }
   };
 
@@ -30,18 +51,24 @@ const ForgotPassword = () => {
                       placeholder="Enter your email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      required
                     />
+                    {emailError && (
+                      <div className="error-message">{emailError}</div>
+                    )}
                   </div>
-                  <button type="submit" className="site-btn">Send Reset Link</button>
+                  <button type="submit" className="site-btn">
+                    Send Reset Link
+                  </button>
                 </form>
-                <p>{message}</p>
+                {message && <p className="server-message">{message}</p>}
               </div>
             </div>
             <div className="col-lg-6">
               <div className="login__register">
                 <h3>Already Have An Account?</h3>
-                <a href="/signin" className="primary-btn">Login Now</a>
+                <a href="/signin" className="primary-btn">
+                  Login Now
+                </a>
               </div>
             </div>
           </div>
