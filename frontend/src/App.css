@@ -242,6 +242,50 @@ h1 {
   color: #1abc9c;
 }
 
+/* Register page styles */
+
+.password-requirements {
+  margin-top: 10px;
+  font-size: 0.875rem;
+}
+
+.password-requirements p {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.password-requirements .valid {
+  color: green;
+}
+
+.password-requirements .invalid {
+  color: red;
+}
+
+.password-requirements .valid::before,
+.password-requirements .invalid::before {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+/* Login Page Style */
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  position: relative;
+  display: block;
+  padding-left: 5px;
+}
+
+.server-message {
+  color: red;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
 @media (max-width: 992px) {
   .header__menu {
     display: none;
@@ -251,7 +295,6 @@ h1 {
     display: inline-block;
   }
 }
-
 
 .alert-popup {
   position: fixed;
@@ -265,7 +308,6 @@ h1 {
   z-index: 1000;
   transition: opacity 0.5s ease;
 }
-
 
 .review-section {
   margin-top: 20px;
@@ -288,7 +330,6 @@ h1 {
   font-size: 0.8em;
   color: #888;
 }
-
 
 .add-review-section {
   margin-top: 30px;
