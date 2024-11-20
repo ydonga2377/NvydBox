@@ -18,10 +18,12 @@ import Checkout from "./components/Checkout/index"
 import ForgotPassword from "./components/Forgot-password";
 import ResetPassword from "./components/Reset-password";
 import TransactionPage from "./components/Transactions/TransactionPage";
+
 import CartPage from "./components/Cart";
 import "./assets/css/bootstrap.min.css";
 import "./App.css";
 import "./assets/css/style.css";
+
 
 
 function App() {
@@ -37,7 +39,7 @@ function App() {
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/singlegame" element={<SingleGame />} />
+        <Route path="/games/:title" element={<SingleGame />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/userprofile" element={<UserProfilePage />} />
         <Route path="/AboutUs" element={<AboutUsPage />} />
