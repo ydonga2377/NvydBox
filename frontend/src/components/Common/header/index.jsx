@@ -49,8 +49,6 @@ const Header = () => {
             <div className="col-lg-8 d-none d-lg-block">
               <nav className="header__menu">
                 <ul>
-
-                 
                   <li>
                     <Link to="/">Home</Link>
                   </li>
@@ -74,19 +72,24 @@ const Header = () => {
                   <li>
                     <Link to="/userprofile">User Profile</Link>
                   </li>
+
                   <li>
-                    <Link to="/cart">Cart</Link>
+                    <Link to="/transactions">View Transaction History</Link>
                   </li>
-                  <li><Link to="/transactions">View Transaction History</Link></li>
                   {isLoggedIn ? (
-                    <li>
-                      <button
-                        onClick={handleLogout}
-                        className="logout-button site-btn p-2"
-                      >
-                        Logout
-                      </button>
-                    </li>
+                    <>
+                      <li>
+                        <Link to="/cart">Cart</Link>
+                      </li>
+                      <li>
+                        <button
+                          onClick={handleLogout}
+                          className="logout-button site-btn p-2"
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    </>
                   ) : (
                     <li>
                       <Link to="/signin" className="site-btn p-2">

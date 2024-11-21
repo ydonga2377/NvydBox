@@ -1,32 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import heroImage1 from "../../assets/img/hero/hero-1.jpg";
-import trendingImage1 from "../../assets/img/trending/trend-1.jpg";
 
 const CartPage = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "Game 1",
-      price: 29.99,
-      image: heroImage1,
-    },
-    {
-      id: 2,
-      name: "Game 2",
-      price: 19.99,
-      image: trendingImage1,
-    },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
 
-  const handleDeleteItem = (id) => {
-    setCartItems(cartItems?.filter((item) => item.id !== id));
+  useEffect(() => {
+    // Get Cart item
+    const fetchCartItems = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          throw new Error("User is not logged in.");
+        }
+
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/cart`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setCartItems(response.data.items || []);
+      } catch (error) {
+        console.error("Error fetching cart items:", error);
+      }
+    };
+
+    fetchCartItems();
+  }, []);
+
+  // delete item
+  const handleDeleteItem = async (gameId) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("User is not logged in.");
+      }
+
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/api/cart/${gameId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setCartItems(cartItems.filter((item) => item.gameId._id !== gameId));
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
   };
 
+  // Calculate total price
   const calculateTotal = () => {
     return cartItems
-      ?.reduce((total, item) => total + item.price, 0)
+      ?.reduce((total, item) => total + item.gameId.price, 0)
       ?.toFixed(2);
   };
 
@@ -39,19 +71,20 @@ const CartPage = () => {
         <>
           <div className="cart-items">
             {cartItems?.map((item) => (
-              <div key={item.id} className="cart-item">
+              <div key={item.gameId._id} className="cart-item">
                 <img
-                  src={item.image}
-                  alt={item.name}
+                  src={item.gameId.imagePath || "/default-image.jpg"}
+                  alt={item.gameId.title}
                   className="cart-item-image"
                 />
                 <div className="cart-item-details">
-                  <h3>{item.name}</h3>
-                  <p>Price: ${item.price.toFixed(2)}</p>
+                  <h3>{item.gameId.title}</h3>
+                  <p>{item.gameId.description}</p>
+                  <p>Price: ${item.gameId.price.toFixed(2)}</p>
                 </div>
                 <button
                   className="delete-button"
-                  onClick={() => handleDeleteItem(item.id)}
+                  onClick={() => handleDeleteItem(item.gameId._id)}
                 >
                   <FontAwesomeIcon icon={faTrash} />
                 </button>
