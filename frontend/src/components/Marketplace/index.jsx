@@ -7,6 +7,13 @@ import itemImg5 from "../../assets/img/blog/blog-5.jpg";
 import itemImg6 from "../../assets/img/blog/blog-6.jpg";
 import itemImg7 from "../../assets/img/blog/blog-7.jpg";
 import itemImg8 from "../../assets/img/blog/blog-8.jpg";
+
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+} from "react-share";
+import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 import axios from "axios";
 import "./Marketplace.css";
 
@@ -70,6 +77,7 @@ const marketplaceItems = [
 ];
 
 const index = () => {
+  const baseURL = window.location.origin;
   const userToken = localStorage.getItem("token");
 
   const handleAddToCart = async (gameId) => {
@@ -121,6 +129,34 @@ const index = () => {
                 <a href={item.link} className="btn btn-warning">
                   Buy Now
                 </a>
+                <div className="share-buttons mt-3">
+                  <FacebookShareButton
+                    windowWidth={1000}
+                    windowHeight={1000}
+                    url={`${baseURL}/games/${item.id}`}
+                    quote={`Check out this amazing game: ${item.title}`}
+                  >
+                    <FacebookIcon size={32} round />
+                  </FacebookShareButton>
+
+                  <TwitterShareButton
+                    windowWidth={1000}
+                    windowHeight={1000}
+                    url={`${baseURL}/games/${item.id}`}
+                    title={`Check out this amazing game: ${item.title}`}
+                  >
+                    <TwitterIcon size={32} round />
+                  </TwitterShareButton>
+
+                  <WhatsappShareButton
+                    windowWidth={1000}
+                    windowHeight={1000}
+                    url={`${baseURL}/games/${item.id}`}
+                    title={`Check out this amazing game: ${item.title}`}
+                  >
+                    <WhatsappIcon size={32} round />
+                  </WhatsappShareButton>
+                </div>
               </div>
             </div>
           </div>
