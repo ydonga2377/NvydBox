@@ -24,11 +24,13 @@ import CartPage from "./components/Cart";
 import "./assets/css/bootstrap.min.css";
 import "./App.css";
 import "./assets/css/style.css";
+import FileBase64 from 'react-file-base64';
 
 
 
 function App() {
   return (
+    
     <Router>
       <Header />
       <Routes>

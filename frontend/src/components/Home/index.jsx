@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import reviewImage from '../../assets/img/anime/review-1.jpg';
-import heroImage1 from '../../assets/img/hero/hero-1.jpg';
-import heroImage2 from '../../assets/img/hero/hero-2.jpg'; // Added second image
+
+
 import trendingImage1 from '../../assets/img/trending/trend-1.jpg';
 import trendingImage2 from '../../assets/img/trending/trend-2.jpg';
 import trendingImage3 from '../../assets/img/trending/trend-3.jpg';
@@ -11,22 +11,43 @@ import trendingImage6 from '../../assets/img/trending/trend-6.jpg';
 import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
+import '../Home/style.css'
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOption, setSortOption] = useState('');
+
   const bannerImages = [
-    { image: heroImage1, label: "Adventure", heading: "Fate / Stay Night: Unlimited Blade Works", description: "After 30 days of travel across the world..." },
-    { image: heroImage2, label: "Action", heading: "Naruto: The Lost Story", description: "The next chapter in the epic journey..." } // Added second slide
+    { image: "/img/banner/hero-1.jpg",label: "Epic Quest", 
+      heading: "Elder Chronicles: Rise of the Guardians", 
+      description: "Embark on a mythical journey to reclaim the lost kingdom from ancient evils."
+    },
+    { image: "/img/banner/action.jpg", label: "Space Odyssey", 
+      heading: "Galactic Wars: Beyond the Stars", 
+      description: "A thrilling space opera where the fate of the galaxy hangs in the balance."
+    }, 
+    {
+      image: "/img/banner/action2.jpg", 
+      label: "Competitive Spirit", 
+      heading: "Striker League: World Champions", 
+      description: "Experience the rush of the ultimate showdown in this global tournament."
+    },
+    {
+      image: "/img/banner/horror.jpg", 
+      label: "Nightmare Realm", 
+      heading: "Shadows of Dread: The Haunted Manor", 
+      description: "Survive a chilling journey through a cursed mansion filled with unspeakable horrors."
+    }
   ];
 
   const sliderSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
+    arrows:false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
   };
 
@@ -72,27 +93,34 @@ const Index = () => {
       <section className="hero">
         <div className="container">
         <Slider {...sliderSettings}>
-          {bannerImages.map((slide, index) => (
-            <div key={index} className="hero__items set-bg" 
-            style={{ 
-              backgroundImage: `url(${heroImage1})`, 
-              height: '400px',  // Set a fixed height to make sure it's visible
-              backgroundSize: 'cover',  // Ensure the background image covers the element
-              backgroundPosition: 'center'  // Center the background image
-            }}>
-              <div className="row">
-                <div className="col-lg-6">
-                  <div className="hero__text">
-                    <div className="label">{slide.label}</div>
-                    <h2>{slide.heading}</h2>
-                    <p>{slide.description}</p>
-                    <a href="#"><span>Watch Now</span> <i className="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
+  {bannerImages.map((slide, index) => (
+    
+    <div key={index} className="hero__items set-bg" style={{ 
+      backgroundImage: "url({slide.image}) !important", 
+      height: '400px !important', 
+      backgroundSize: 'cover !important', 
+      backgroundPosition: 'center !important' 
+    }}>
+      
+      <div className="banner-img">
+      </div>
+      <img className="banner-img-img" src={slide.image}/>
+      <div className="hero__text">
+            <div className="label">{slide.label}</div>
+            
+            <h2>{slide.heading}</h2>
+            <p>{slide.description}</p>
+            <a href="#"><span>Watch Now</span> <i className="fa fa-angle-right"></i></a>
+          </div>
+      <div className="row">
+        <div className="col-lg-6">
+          
+        </div>
+      </div>
+    </div>
+  ))}
+</Slider>
+
         </div>
       </section>
 
