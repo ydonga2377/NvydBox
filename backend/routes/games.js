@@ -2,16 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Game = require("../models/Game");
 
-// Create a new game
-router.post("/", async (req, res) => {
-  try {
-    const games = await Game.insertMany(req.body);
-    res.status(201).json(games);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
-
 // Read all games
 router.get("/", async (req, res) => {
   try {
@@ -22,17 +12,13 @@ router.get("/", async (req, res) => {
   }
 });
 
-// get game data by ID
-router.get("/:gameId", async (req, res) => {
-  const { gameId } = req.params;
+// Create a new game
+router.post("/", async (req, res) => {
   try {
-    const game = await Game.findById(gameId);
-    if (!game) {
-      return res.status(404).json({ message: "Game not found" });
-    }
-    res.status(200).json(game);
+    const games = await Game.insertMany(req.body);
+    res.status(201).json(games);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching game details" });
+    res.status(400).json({ message: error.message });
   }
 });
 
