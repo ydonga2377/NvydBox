@@ -8,6 +8,7 @@ const reviewRoutes = require("./routes/review");
 const cartRoutes = require("./routes/cart");
 const wishlistRoutes = require("./routes/wishlist");
 const userProfileRoutes = require("./routes/userProfile");
+const marketplaceRoutes = require("./routes/marketplace");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/wishlist", wishlistRoutes);
 app.use("/api/profile", userProfileRoutes);
+app.use("/api/marketplace", marketplaceRoutes);
 
 const PORT = process.env.PORT || 5000;
 
