@@ -1,6 +1,28 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Wishlist.css";
+import itemImg1 from "../../assets/img/blog/blog-1.jpg";
+import itemImg2 from "../../assets/img/blog/blog-2.jpg";
+import itemImg3 from "../../assets/img/blog/blog-3.jpg";
+import itemImg4 from "../../assets/img/blog/blog-4.jpg";
+import itemImg5 from "../../assets/img/blog/blog-5.jpg";
+import itemImg6 from "../../assets/img/blog/blog-6.jpg";
+import itemImg7 from "../../assets/img/blog/blog-7.jpg";
+import itemImg8 from "../../assets/img/blog/blog-8.jpg";
+
+const getImageByKey = (key) => {
+  const images = {
+    EpicSword: itemImg1,
+    LegendaryArmor: itemImg2,
+    MysticPotion: itemImg3,
+    HealingElixir: itemImg4,
+    DragonShield: itemImg5,
+    MagicWand: itemImg6,
+    AncientScroll: itemImg7,
+    PhantomCloak: itemImg8,
+  };
+  return images[key] || "https://via.placeholder.com/150"; // Fallback image
+};
 
 const WishlistPage = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -22,7 +44,11 @@ const WishlistPage = () => {
             },
           }
         );
-        setWishlist(response.data.games || []);
+        const itemsWithImages = response.data.games.map((item, index) => ({
+          ...item,
+          img: getImageByKey(item.gameId.imageKey),
+        }));
+        setWishlist(itemsWithImages || []);
       } catch (error) {
         console.error("Error fetching wishlist:", error);
         alert("Failed to fetch wishlist.");
@@ -65,7 +91,7 @@ const WishlistPage = () => {
           {wishlist.map((game) => (
             <div key={game.gameId._id} className="wishlist-item">
               <img
-                src={`../../${game.gameId.imagePath}`}
+                src={game.img || "/default-image.jpg"}
                 alt={game.gameId.title}
               />
               <div>

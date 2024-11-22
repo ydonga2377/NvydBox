@@ -6,7 +6,7 @@ const cartSchema = new mongoose.Schema({
     {
       gameId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Game",
+        ref: "MarketplaceItem",
         required: true,
       },
     },
