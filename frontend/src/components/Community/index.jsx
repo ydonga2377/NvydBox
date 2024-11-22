@@ -1,77 +1,55 @@
-import React from 'react'
-import communityImg1 from "../../assets/img/recent/recent-1.jpg";
-import communityImg2 from "../../assets/img/recent/recent-2.jpg";
-import communityImg3 from "../../assets/img/recent/recent-3.jpg";
-import communityImg4 from "../../assets/img/recent/recent-4.jpg";
-import communityImg5 from "../../assets/img/recent/recent-5.jpg";
-import communityImg6 from "../../assets/img/recent/recent-6.jpg";
-const communityPosts = [
-  {
-      id: 1,
-      title: "Latest Updates",
-      img: communityImg1,
-      description: "Stay updated with the latest gaming news and events.",
-      link: "#"
-  },
-  {
-      id: 2,
-      title: "Join a Clan",
-      img: communityImg2,
-      description: "Find and join clans that suit your gaming style.",
-      link: "#"
-  },
-  {
-      id: 3,
-      title: "Upcoming Tournaments",
-      img: communityImg3,
-      description: "Participate in upcoming gaming tournaments and show your skills.",
-      link: "#"
-  },
-  {
-      id: 4,
-      title: "Game Reviews",
-      img: communityImg4,
-      description: "Read reviews of the latest games from our community.",
-      link: "#"
-  },
-  {
-      id: 5,
-      title: "Tips & Tricks",
-      img: communityImg5,
-      description: "Learn tips and tricks from seasoned gamers.",
-      link: "#"
-  },
-  {
-      id: 6,
-      title: "Fan Art Gallery",
-      img: communityImg6,
-      description: "Showcase your fan art and get feedback.",
-      link: "#"
-  },
-];
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'; // Import axios
+import { Link } from 'react-router-dom'; // For navigation
+import './community.css'; // Assuming you have CSS styles
 
-const index = () => {
+const BlogList = () => {
+  const [blogs, setBlogs] = useState([]);  // State to hold blog posts
+  const [loading, setLoading] = useState(true);  // Loading state for async operation
+  const [error, setError] = useState(null);  // Error state
+
+  useEffect(() => {
+    const getBlogs = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/blogRoutes'); // API call to fetch blog posts
+        setBlogs(response.data);  // Set the fetched blogs in state
+        setLoading(false);  // Set loading to false after data is fetched
+      } catch (err) {
+        console.error('Error fetching blog posts:', err);
+        setError('Error fetching blog posts');  // Set error state if request fails
+        setLoading(false);  // Set loading to false if there's an error
+      }
+    };
+    
+    getBlogs();  // Fetch the blog posts when the component mounts
+  }, []);  // Empty dependency array to run this effect once on mount
+
+  if (loading) return <p>Loading...</p>;  // Display loading message
+  if (error) return <p style={{ color: 'red' }}>{error}</p>;  // Display error message if there's an error
+
   return (
-    <div className='container-fluid'>
-            <div className="community-container">
-                <h1 className="text-center text-light mb-4">Gaming Community</h1>
-                <div className="row justify-content-center">
-                    {communityPosts.map(post => (
-                        <div className="col-md-4 mb-4" key={post.id}>
-                            <div className="card community-card">
-                                <img src={post.img} className="card-img-top" alt={post.title} />
-                                <div className="card-body">
-                                    <h5 className="card-title">{post.title}</h5>
-                                    <p className="card-text">{post.description}</p>
-                                    <a href={post.link} className="btn btn-outline-light">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-);
-}
+    <div className="blog-list-container">
+      <h1>Community Blogs</h1>
+      <div className="blog-grid">
+        {blogs.map(blog => (
+          <div className="blog-card" key={blog._id}>
+            {blog.feature_image && (
+              <img 
+                src={blog.feature_image} 
+                alt={blog.title} 
+                className="blog-image" 
+              />
+            )}
+            <h2 className="blog-title">{blog.title}</h2>
+            <p className="blog-author">By {blog.author}</p>
+            <Link to={`/community/${blog._id}`} className="read-more-button">
+              Read More
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-export default index
+export default BlogList;

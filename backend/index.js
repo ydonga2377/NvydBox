@@ -6,7 +6,8 @@ const authRoutes = require("./routes/auth");
 const gameRoutes = require("./routes/games");
 const reviewRoutes = require("./routes/review");
 const cartRoutes = require("./routes/cart");
-
+const blogRoutes = require("./routes/blogRoutes");
+const commentRoutes = require('./routes/commentRoutes');
 const app = express();
 
 app.use(cors());
@@ -16,6 +17,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/games", gameRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/cart", cartRoutes);
+app.use("/api/blogRoutes", blogRoutes);
+app.use("/api/comments", commentRoutes);
 
 const PORT = process.env.PORT || 5000;
 
