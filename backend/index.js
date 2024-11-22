@@ -8,6 +8,7 @@ const reviewRoutes = require("./routes/review");
 const cartRoutes = require("./routes/cart");
 const blogRoutes = require("./routes/blogRoutes");
 const commentRoutes = require('./routes/commentRoutes');
+const checkoutRoutes = require('./routes/checkoutRoutes');
 const app = express();
 
 app.use(cors());
@@ -19,7 +20,7 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/blogRoutes", blogRoutes);
 app.use("/api/comments", commentRoutes);
-
+app.use("/api/checkoutRoutes", checkoutRoutes);
 const PORT = process.env.PORT || 5000;
 
 mongoose

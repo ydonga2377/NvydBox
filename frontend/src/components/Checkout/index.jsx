@@ -10,6 +10,17 @@ const Checkout = () => {
         cvv: '',
         nameOnCard: '',
     });
+    const [address, setAddress] = useState({
+        fullName: '',
+        email: '',
+        phone: '',
+        addressLine1: '',
+        addressLine2: '',
+        city: '',
+        state: '',
+        postalCode: '',
+        country: ''
+    });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -36,17 +47,36 @@ const Checkout = () => {
         setPaymentInfo({ ...paymentInfo, [e.target.name]: e.target.value });
     };
 
+    const handleAddressChange = (e) => {
+        setAddress({ ...address, [e.target.name]: e.target.value });
+    };
+
     const handleCheckout = async (e) => {
         e.preventDefault();
         setLoading(true);
         setError('');
 
         try {
+            const transaction = {
+                amount: totalAmount,
+                paymentMethod: 'Credit Card', // Adjust based on payment method
+                transactionDate: new Date(),
+                status: 'pending', // Can change based on real payment status
+            };
+
             const response = await axios.post('/api/checkout', {
-                cartItems,
-                paymentInfo,
+                userId: 'userId', // Replace with actual user ID
+                items: cartItems.map(item => ({
+                    gameId: item.id, // Assuming each item has an id
+                    title: item.productName,
+                    image: item.imageUrl, // Assuming each item has an image
+                    price: item.price,
+                })),
+                transaction,
+                address,
             });
-            alert('Checkout successful! Order ID: ' + response.data.order._id);
+
+            alert('Checkout successful! Order ID: ' + response.data._id);
             // Redirect or clear cart as necessary
         } catch (error) {
             console.error('Checkout error:', error);
@@ -107,6 +137,78 @@ const Checkout = () => {
                     placeholder="CVV"
                     value={paymentInfo.cvv}
                     onChange={handlePaymentChange}
+                    required
+                />
+                <h3>Shipping Address</h3>
+                <input
+                    type="text"
+                    name="fullName"
+                    placeholder="Full Name"
+                    value={address.fullName}
+                    onChange={handleAddressChange}
+                    required
+                />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={address.email}
+                    onChange={handleAddressChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="phone"
+                    placeholder="Phone"
+                    value={address.phone}
+                    onChange={handleAddressChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="addressLine1"
+                    placeholder="Address Line 1"
+                    value={address.addressLine1}
+                    onChange={handleAddressChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="addressLine2"
+                    placeholder="Address Line 2"
+                    value={address.addressLine2}
+                    onChange={handleAddressChange}
+                />
+                <input
+                    type="text"
+                    name="city"
+                    placeholder="City"
+                    value={address.city}
+                    onChange={handleAddressChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="state"
+                    placeholder="State"
+                    value={address.state}
+                    onChange={handleAddressChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="postalCode"
+                    placeholder="Postal Code"
+                    value={address.postalCode}
+                    onChange={handleAddressChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="country"
+                    placeholder="Country"
+                    value={address.country}
+                    onChange={handleAddressChange}
                     required
                 />
                 <button type="submit" disabled={loading}>

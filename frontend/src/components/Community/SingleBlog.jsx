@@ -4,28 +4,56 @@ import { useParams } from 'react-router-dom';
 import './community.css';
 
 const SingleBlog = () => {
-  const { id } = useParams(); 
-  const [blog, setBlog] = useState(null); 
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(null); 
+  const { id } = useParams();
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [comment, setComment] = useState(""); // State for new comment
+  const [userName, setUserName] = useState(""); // State for user's name
+  const [commentError, setCommentError] = useState(""); // To show validation error
 
   useEffect(() => {
     const fetchSingleBlog = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/blogRoutes/${id}`);
-        setBlog(response.data); 
-        setLoading(false); 
+        setBlog(response.data);
+        setLoading(false);
       } catch (err) {
         setError('Error fetching blog post');
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
-    fetchSingleBlog(); 
-  }, [id]); 
+    fetchSingleBlog();
+  }, [id]);
 
-  if (loading) return <p>Loading...</p>; 
-  if (error) return <p style={{ color: 'red' }}>{error}</p>; 
+  const handleCommentSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!userName || !comment) {
+      setCommentError("Both name and comment are required.");
+      return;
+    }
+
+    try {
+      // Send POST request to add comment
+      const response = await axios.post(
+        `http://localhost:5000/api/blogRoutes/${id}/comment`,
+        { user_id: userName, content: comment }
+      );
+
+      // Update the blog state with the new comment
+      setBlog(response.data);
+      setComment(""); // Clear the comment input
+      setUserName(""); // Clear the name input
+      setCommentError(""); // Clear any previous errors
+    } catch (err) {
+      console.error("Error adding comment:", err);
+    }
+  };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p style={{ color: 'red' }}>{error}</p>;
 
   return (
     <div className="single-blog-container">
@@ -56,6 +84,24 @@ const SingleBlog = () => {
               <p>No comments yet.</p>
             )}
           </div>
+
+          {/* Add comment form */}
+          <h4>Add a comment</h4>
+          <form onSubmit={handleCommentSubmit}>
+            <input
+              type="text"
+              placeholder="Your Name"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <textarea
+              placeholder="Your Comment"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
+            {commentError && <p style={{ color: 'red' }}>{commentError}</p>}
+            <button type="submit">Submit</button>
+          </form>
         </div>
       ) : (
         <p className="single-blog-loading">Blog post not found.</p>
