@@ -105,6 +105,34 @@ const index = () => {
       );
     }
   };
+
+  const handleAddToWishlist = async (gameId) => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Please log in to add items to your wishlist.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/wishlist`,
+        { gameId: "67244f18e7c8468930a685fe" },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      alert("Game added to wishlist successfully!");
+    } catch (error) {
+      console.error("Error adding to wishlist:", error);
+      alert(
+        error.response?.data?.message ||
+          "Failed to add game to wishlist. Try again."
+      );
+    }
+  };
+
   return (
     <div className="marketplace-container">
       <h1 className="text-center text-light mb-4">Marketplace</h1>
@@ -116,15 +144,21 @@ const index = () => {
               <div className="card-body">
                 <h5 className="card-title">{item.title}</h5>
                 <p className="card-text">Price: ${item.price}</p>
-                {userToken ? (
-                  <button
-                    className="btn btn-add-to-cart"
-                    onClick={() => handleAddToCart(item.id)}
-                  >
-                    Add to Cart
-                  </button>
-                ) : (
-                  <p className="text-muted">Log in to add items to your cart</p>
+                {userToken && (
+                  <>
+                    <button
+                      className="btn btn-add-to-cart"
+                      onClick={() => handleAddToCart(item.id)}
+                    >
+                      Add to Cart
+                    </button>
+                    <button
+                      className="btn btn-secondary mt-2"
+                      onClick={() => handleAddToWishlist(item.id)}
+                    >
+                      Add to Wishlist
+                    </button>
+                  </>
                 )}
                 <a href={item.link} className="btn btn-warning">
                   Buy Now

@@ -52,9 +52,9 @@ const Header = () => {
                   <li>
                     <Link to="/marketplace">Marketplace</Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link to="/userprofile">User Profile</Link>
-                  </li>
+                  </li> */}
 
                   <li>
                     <Link to="/transactions">View Transaction History</Link>
@@ -63,6 +63,12 @@ const Header = () => {
                     <>
                       <li>
                         <Link to="/cart">Cart</Link>
+                      </li>
+                      <li>
+                        <Link to="/wishlist">My Wishlist</Link>
+                      </li>
+                      <li>
+                        <Link to="/profile">My Profile</Link>
                       </li>
                       <li>
                         <button
