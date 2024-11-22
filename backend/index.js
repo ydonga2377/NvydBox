@@ -6,16 +6,22 @@ const authRoutes = require("./routes/auth");
 const gameRoutes = require("./routes/games");
 const reviewRoutes = require("./routes/review");
 const cartRoutes = require("./routes/cart");
+const wishlistRoutes = require("./routes/wishlist");
+const userProfileRoutes = require("./routes/userProfile");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/uploads", express.static("uploads"));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/games", gameRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/cart", cartRoutes);
+app.use("/api/wishlist", wishlistRoutes);
+app.use("/api/profile", userProfileRoutes);
 
 const PORT = process.env.PORT || 5000;
 
