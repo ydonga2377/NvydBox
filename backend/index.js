@@ -9,7 +9,7 @@ const cartRoutes = require("./routes/cart");
 const wishlistRoutes = require("./routes/wishlist");
 const userProfileRoutes = require("./routes/userProfile");
 const marketplaceRoutes = require("./routes/marketplace");
-
+const transactionRoute = require("./routes/transaction");
 const app = express();
 
 app.use(cors());
@@ -24,6 +24,7 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/wishlist", wishlistRoutes);
 app.use("/api/profile", userProfileRoutes);
 app.use("/api/marketplace", marketplaceRoutes);
+app.use("/api/transaction", transactionRoute);
 
 const PORT = process.env.PORT || 5000;
 
