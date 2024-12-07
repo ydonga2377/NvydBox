@@ -14,6 +14,8 @@ import AboutUsPage from "./components/AboutUs";
 import Register from "./components/Register/index";
 import ForgotPassword from "./components/Forgot-password";
 import ResetPassword from "./components/Reset-password";
+import SingleBlog from "./components/Community/SingleBlog";
+import Checkout from "./components/Checkout/index";
 import TransactionPage from "./components/Transactions/TransactionPage";
 import "./assets/css/bootstrap.min.css";
 import "./App.css";
@@ -39,8 +41,9 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/userprofile" element={<UserProfilePage />} />
         <Route path="/AboutUs" element={<AboutUsPage />} />
-
+        <Route path="/community/:id" element={<SingleBlog />} /> 
         <Route path="/transactions" element={<TransactionPage />} />
+        <Route path="/Checkout" element={<Checkout />} />
 
         <Route path="/cart" element={<CartPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />

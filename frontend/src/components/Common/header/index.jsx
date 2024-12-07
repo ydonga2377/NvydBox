@@ -2,17 +2,34 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { translateText } from './services/translateService';
+import logo from '../../../assets/img/logo.png';
+
 
 const Header = () => {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const isLoggedIn = !!localStorage.getItem("token");
+  const [language, setLanguage] = useState("en"); // Default to English
+
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/signin");
   };
-
+  const handleLanguageChange = async (e) => {
+    const newLang = e.target.value;
+    setLanguage(newLang);
+  
+    const elementsToTranslate = document.querySelectorAll(".translatable");
+    elementsToTranslate.forEach(async (element) => {
+      const originalText = element.getAttribute("data-original") || element.textContent;
+      const translatedText = await translateText(originalText, newLang);
+      element.textContent = translatedText;
+      element.setAttribute("data-original", originalText);
+    });
+  };
+  
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -24,10 +41,8 @@ const Header = () => {
           <div className="row align-items-center">
             <div className="col-lg-2 col-6">
               <div className="header__logo">
-                <Link to="/">
-                  <div className="section-title">
-                    <h4>NyvdBox</h4>
-                  </div>
+              <Link to="/">
+                  <img src={logo} alt="NyvdBox Logo" className="logo" /> {/* Logo image */}
                 </Link>
               </div>
             </div>
@@ -52,9 +67,11 @@ const Header = () => {
                   <li>
                     <Link to="/marketplace">Marketplace</Link>
                   </li>
-                  {/* <li>
+                  <li><Link to="/Wishlist">Wishlist</Link></li>
+                  <li><Link to="/Checkout">Checkout</Link></li>
+                  <li>
                     <Link to="/userprofile">User Profile</Link>
-                  </li> */}
+                  </li> 
 
                   <li>
                     <Link to="/transactions">View Transaction History</Link>
@@ -89,11 +106,24 @@ const Header = () => {
                 </ul>
               </nav>
             </div>
+            
             <div className="col-lg-2 col-6 d-flex justify-content-end align-items-center">
+            <select onChange={handleLanguageChange} value={language}>
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+              </select>
+              &nbsp;&nbsp;
+              <p className="translatable" data-original="Hello, welcome to our app!">Hello, welcome to our app!</p>
+              
+            </div>
+            <div className="col-lg-2 col-6 d-flex justify-content-end align-items-center">
+            
               <button className="hamburger-icon" onClick={toggleSidebar}>
                 <FontAwesomeIcon icon={sidebarOpen ? faTimes : faBars} />
               </button>
             </div>
+
           </div>
         </div>
       </header>
