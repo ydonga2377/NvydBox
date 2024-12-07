@@ -44,3 +44,18 @@
 .hero {
      padding-top: 0px !important; 
 }
+
+.hero__text .label {
+    font-size: 13px;
+    color: #ffffff !important;
+    background: #fff0 !important;
+    
+    opacity: 1 !important;
+    transition: all, 0.2s;
+}
+
+.hero__text h2 {
+    
+    opacity: 1 !important;
+    transition: all, 0.4s;
+}

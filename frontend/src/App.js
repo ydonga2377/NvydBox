@@ -1,4 +1,3 @@
-
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Common/header";
@@ -13,20 +12,17 @@ import SingleGame from "./components/SingleGame";
 import UserProfilePage from "./components/User-profile";
 import AboutUsPage from "./components/AboutUs";
 import Register from "./components/Register/index";
-import Wishlist from "./components/Wishlist/index"
-import Checkout from "./components/Checkout/index"
 import ForgotPassword from "./components/Forgot-password";
 import ResetPassword from "./components/Reset-password";
 import SingleBlog from "./components/Community/SingleBlog";
+import Checkout from "./components/Checkout/index";
 import TransactionPage from "./components/Transactions/TransactionPage";
-
-import CartPage from "./components/Cart";
 import "./assets/css/bootstrap.min.css";
 import "./App.css";
 import "./assets/css/style.css";
-import FileBase64 from 'react-file-base64';
-
-
+import CartPage from "./components/Cart";
+import WishlistPage from "./components/Wishlist/WishlistPage";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
@@ -46,14 +42,13 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/userprofile" element={<UserProfilePage />} />
         <Route path="/AboutUs" element={<AboutUsPage />} />
-        
         <Route path="/community/:id" element={<SingleBlog />} /> 
         <Route path="/transactions" element={<TransactionPage />} />
-
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/Checkout" element={<Checkout />} />
 
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       <Footer />
     </Router>
