@@ -9,6 +9,8 @@ const cartRoutes = require("./routes/cart");
 const wishlistRoutes = require("./routes/wishlist");
 const userProfileRoutes = require("./routes/userProfile");
 const marketplaceRoutes = require("./routes/marketplace");
+
+const transactionRoute = require("./routes/transaction");
 const blogRoutes = require("./routes/blogRoutes");
 const checkoutRoutes = require('./routes/checkoutRoutes');
 
@@ -27,6 +29,8 @@ app.use("/api/wishlist", wishlistRoutes);
 app.use("/api/profile", userProfileRoutes);
 app.use("/api/blogRoutes", blogRoutes);
 app.use("/api/marketplace", marketplaceRoutes);
+app.use("/api/transaction", transactionRoute);
+
 app.use("/api/checkoutRoutes", checkoutRoutes);
 
 const PORT = process.env.PORT || 5000;

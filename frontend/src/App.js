@@ -26,6 +26,7 @@ import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
+    
     <Router>
       <Header />
       <Routes>

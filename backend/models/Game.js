@@ -32,6 +32,10 @@ const gameSchema = new mongoose.Schema({
     required: true,
     min: 0,
     max: 10
+  },
+  imageUrl: {  // New field for image URL
+    type: String,
+    required: true, // Change this to false if the image URL is optional
   }
 });
 

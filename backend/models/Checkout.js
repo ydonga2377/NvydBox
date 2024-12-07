@@ -94,4 +94,6 @@ const checkoutSchema = new mongoose.Schema({
   },
 });
 
+
 module.exports = mongoose.model("Checkout", checkoutSchema);
+
