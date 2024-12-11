@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; // Make sure to install axios
+import axios from "axios";
 import "./TransactionPage.css";
 
 const TransactionPage = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch transactions when component mounts
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        // Assuming the userId is available in your app context or passed as a prop
-        const userId = "userIdHere"; // Replace with actual userId
-        const response = await axios.get('http://localhost:5000/api/transactions/getUserTransactions/${userId}');
+        const response = await axios.get(
+          "http://localhost:5000/api/transactions/getAllTransactions"
+        );
         setTransactions(response.data);
-        setLoading(false);
       } catch (error) {
-        console.error("Error fetching transactions", error);
+        console.error("Error fetching transactions", error.message);
+      } finally {
         setLoading(false);
       }
     };
@@ -43,9 +42,9 @@ const TransactionPage = () => {
         <tbody>
           {transactions.map((transaction) => (
             <tr key={transaction._id}>
-              <td>{transaction.gameId.title}</td>
+              <td>{transaction.gameId?.title || "N/A"}</td>
               <td>{new Date(transaction.transactionDate).toLocaleString()}</td>
-              <td>{transaction.amount}</td>
+              <td>${transaction.amount}</td>
               <td>{transaction.status}</td>
             </tr>
           ))}
